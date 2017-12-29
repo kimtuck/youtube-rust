@@ -1,0 +1,6 @@
+[package]
+name = "youtube_rust"
+version = "0.1.0"
+authors = ["Robert Hanson <robert.hanson@solutiondesign.com>"]
+
+[dependencies]
