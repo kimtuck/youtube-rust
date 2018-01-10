@@ -2,48 +2,34 @@ extern crate hyper;
 extern crate hyper_tls;
 extern crate tokio_core;
 extern crate futures;
+extern crate reqwest;
 
 use hyper::{Client};
 use hyper_tls::HttpsConnector;
 use tokio_core::reactor::Core;
 use futures::{Future, Stream};
 use std::io::{self, Write};
+use reqwest::{Request, Response, Error};
 
 fn main() {
 
     let youtube_url = String::from("https://www.youtube.com/watch?v=ycU56DnjB3I&feature=youtu.be");
+    //let youtube_url = String::from("https://www.youtube.com");
     //println!("{}",youtube_url);
-    youtube_html_source(youtube_url);
+    let mut response = youtube_html_source(youtube_url);
+    println!("{}", response);
+
+    println!("done calling youtube_html_source");
 }
 
-fn youtube_html_source(youtube_url: String) {
+fn youtube_html_source(youtube_url: String) -> String {
+    let mut resp = reqwest::get(youtube_url.as_str()).unwrap();
 
-    let mut core = Core::new().unwrap();
-    let handle = core.handle();
-    let client = Client::configure()
-        .connector(HttpsConnector::new(4, &handle).unwrap())
-        .build(&handle);
-    let req = client.get("https://hyper.rs".parse().unwrap());
-    let res = core.run(req);
-    assert_eq!(res.is_ok(),false);
+    assert!(resp.status().is_success());
 
-    /*
-    //println!("{}", youtube_url);
-    //let addr = youtube_url.parse().unwrap();
-    //println!("{}",addr);
-    //let work = client.get(addr).and_then(|res| {
+    let body = resp.text().unwrap();
 
-    let uri = "https://www.youtube.com".parse().unwrap();
-    let work = client.get(uri).and_then(|res| {
-        println!("Response: {}", res.status());
+    //println!("body = {:?}", body);
 
-        res.body().for_each(|chunk| {
-            io::stdout()
-                .write_all(&chunk)
-                .map_err(From::from)
-        })
-    });
-    core.run(work);
-    */
+    body
 }
-
