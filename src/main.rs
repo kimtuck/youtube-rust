@@ -13,6 +13,8 @@ mod VideoInfo;
 use regex::{Regex};
 use std::collections::HashMap;
 use std::io::{copy, stdout};
+use std::fs::File;
+use std::io::prelude::*;
 
 #[derive(Serialize, Deserialize, Debug)]
 struct Youtube_streams_args
@@ -72,8 +74,9 @@ fn main() {
 
     // stream bytes from stream_url into file
     let mut response = reqwest::get(stream_url).expect("Failed to send request");
-    copy(&mut response, &mut stdout()).expect("Failed to read response");
-
+    let mut file = File::create("foo.txt").unwrap();
+    copy(&mut response, &mut file).expect("Failed to read response");
+    file.sync_all();
 }
 
 fn video_info_from_source(extraction_info: &str) -> String

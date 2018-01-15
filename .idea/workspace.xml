@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="bcc8607f-2d0d-4109-ae36-a9d4d3607ce8" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/VideoInfo.rs" afterPath="$PROJECT_DIR$/src/VideoInfo.rs" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main.rs" afterPath="$PROJECT_DIR$/src/main.rs" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -21,8 +20,8 @@
       <file leaf-file-name="main.rs" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main.rs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="651">
-              <caret line="88" column="16" lean-forward="true" selection-start-line="88" selection-start-column="16" selection-end-line="88" selection-end-column="16" />
+            <state relative-caret-position="693">
+              <caret line="78" column="20" lean-forward="false" selection-start-line="78" selection-start-column="20" selection-end-line="78" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -201,7 +200,7 @@
       <workItem from="1515770937914" duration="714000" />
       <workItem from="1515797456203" duration="8406000" />
       <workItem from="1515954564243" duration="8383000" />
-      <workItem from="1516022105058" duration="7747000" />
+      <workItem from="1516022105058" duration="9030000" />
     </task>
     <task id="LOCAL-00001" summary="Hyper, tokio, https">
       <created>1515532123523</created>
@@ -231,11 +230,18 @@
       <option name="project" value="LOCAL" />
       <updated>1516030786811</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Almost there">
+      <created>1516036551821</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1516036551821</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="68091000" />
+    <option name="totallyTimeSpent" value="69374000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1170" extended-state="6" />
@@ -290,7 +296,9 @@
     <MESSAGE value="Hyper, tokio, https" />
     <MESSAGE value="reqwest" />
     <MESSAGE value="VideoInfos" />
-    <option name="LAST_COMMIT_MESSAGE" value="VideoInfos" />
+    <MESSAGE value="Almost there" />
+    <MESSAGE value="Reads/Writes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Reads/Writes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -665,8 +673,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main.rs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="651">
-          <caret line="88" column="16" lean-forward="true" selection-start-line="88" selection-start-column="16" selection-end-line="88" selection-end-column="16" />
+        <state relative-caret-position="693">
+          <caret line="78" column="20" lean-forward="false" selection-start-line="78" selection-start-column="20" selection-end-line="78" selection-end-column="20" />
           <folding />
         </state>
       </provider>
