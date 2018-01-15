@@ -12,6 +12,7 @@ mod VideoInfo;
 
 use regex::{Regex};
 use std::collections::HashMap;
+use std::io::{copy, stdout};
 
 #[derive(Serialize, Deserialize, Debug)]
 struct Youtube_streams_args
@@ -42,39 +43,37 @@ fn main() {
     let streams=youtube_streams_as_json.args.url_encoded_fmt_stream_map.as_str();
     let mut streams: Vec<&str> = streams.split(",").collect();
 
-    //let strx = youtube_streams.args.adaptive_fmts;
-    //let mut vecs2: Vec<&str> = strx.split(",").collect();
-    //vecs.append(&mut vecs2);
+    let strx = youtube_streams_as_json.args.adaptive_fmts.as_str();
+    let mut vecs2: Vec<&str> = strx.split(",").collect();
+    streams.append(&mut vecs2);
 
     //println!("strems: {:?}", streams);
 
     let videoInfos = VideoInfo::VideoInfo::defaults();
 
-    let streams_vec: Vec<&HashMap<String,String>> = Vec::new();
-    let streams_vec: Vec<&HashMap<String,String>> = streams.iter().fold(streams_vec, |mut accum, extraction_info| {
-
-        //string itag = HttpHelper.ParseQueryString(extractionInfo.Uri.Query)["itag"];
-        //int formatCode = int.Parse(itag);
-        //VideoInfo info = VideoInfo.Defaults.SingleOrDefault(videoInfo => videoInfo.FormatCode == formatCode)
-
+    let audio_stream_info = streams.iter().map(|extraction_info| {
         let vec: Vec<(String, String)> = serde_urlencoded::de::from_str(extraction_info).unwrap();
         let hashmap_parsed_url: HashMap<String, String> = vec.iter().cloned().collect();
-
-        let itag: i32 = hashmap_parsed_url.get("itag").unwrap().parse::<i32>().unwrap();
+        hashmap_parsed_url
+    }).find(|hashmap| {
+        println!("hashmap: {:?}", hashmap);
+        let itag: i32 = hashmap.get("itag").unwrap().parse::<i32>().unwrap();
         let videoinfo = VideoInfo::VideoInfo::find_videoinfo_for_formatcode(&videoInfos, itag);
         println!("itag {}--> type {:?}",itag,videoinfo.adaptive_type);
+        println!("------------------------------");
+        println!("");
+        println!("");
         match videoinfo.adaptive_type {
-            VideoInfo::AdaptiveType::Audio =>
-                accum.push(&hashmap_parsed_url.clone()),
-            _  => ()
-
+            VideoInfo::AdaptiveType::Audio => true,
+            _  => false
         }
-        accum
-    });
+    }).unwrap();
+    let stream_url = audio_stream_info.get("url").unwrap();
 
-    println!("{}",streams_vec.len());
-    println!("{:?}", streams_vec[0]);
-    println!("{:?}", streams_vec[0].get("itag").unwrap());
+    // stream bytes from stream_url into file
+    let mut response = reqwest::get(stream_url).expect("Failed to send request");
+    copy(&mut response, &mut stdout()).expect("Failed to read response");
+
 }
 
 fn video_info_from_source(extraction_info: &str) -> String
