@@ -1,5 +1,5 @@
 #[derive(Debug,PartialEq, Eq)]
-enum AdaptiveType
+pub enum AdaptiveType
 {
     None,
     Audio,
@@ -34,7 +34,7 @@ pub struct VideoInfo
     is_3d: bool,
     audio_type: AudioType,
     audio_bit_rate: i32,
-    adaptive_type: AdaptiveType,
+    pub adaptive_type: AdaptiveType,
     download_url: String
 }
 
@@ -113,19 +113,18 @@ impl VideoInfo {
     VideoInfo::new(172, VideoType::WebM, 0, false, AudioType::Vorbis, 192, AdaptiveType::Audio)
         ]
     }
-    pub fn xfind<'a>(infos: &'a Vec<VideoInfo> , format_code: i32) -> &'a VideoInfo
+
+    pub fn find_videoinfo_for_formatcode<'a>(infos: &'a Vec<VideoInfo>, format_code: i32) -> &'a VideoInfo
     {
         infos.iter().find(|&x| x.format_code == format_code).unwrap()
     }
 }
 
-
 #[test]
 fn lookup()
 {
-    let infos:  Vec<VideoInfo> = VideoInfo::defaults();
-    //assert_eq!(1,0);
-    let f: &VideoInfo = VideoInfo::xfind(&infos,5);
+    let infos: Vec<VideoInfo> = VideoInfo::defaults();
+    let f: &VideoInfo = VideoInfo::find_videoinfo_for_formatcode(&infos, 5);
     let y: &VideoInfo = &infos[0];
     assert_eq!(*f, *y);
 }

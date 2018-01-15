@@ -49,17 +49,28 @@ fn main() {
     //println!("strems: {:?}", streams);
 
     let videoInfos = VideoInfo::VideoInfo::defaults();
-    let streams_vec: Vec<HashMap<String,String>> = streams.iter().map(|extraction_info| {
+
+    let streams_vec: Vec<&HashMap<String,String>> = Vec::new();
+    let streams_vec: Vec<&HashMap<String,String>> = streams.iter().fold(streams_vec, |mut accum, extraction_info| {
 
         //string itag = HttpHelper.ParseQueryString(extractionInfo.Uri.Query)["itag"];
         //int formatCode = int.Parse(itag);
         //VideoInfo info = VideoInfo.Defaults.SingleOrDefault(videoInfo => videoInfo.FormatCode == formatCode)
 
-        let vec : Vec<(String, String)> = serde_urlencoded::de::from_str(extraction_info).unwrap();
-        let hashmap_parsed_url = vec.iter().cloned().collect();
-        //println!("hashmap_parsed_url: {:?}",hashmap_parsed_url);
-        hashmap_parsed_url
-    }).collect();
+        let vec: Vec<(String, String)> = serde_urlencoded::de::from_str(extraction_info).unwrap();
+        let hashmap_parsed_url: HashMap<String, String> = vec.iter().cloned().collect();
+
+        let itag: i32 = hashmap_parsed_url.get("itag").unwrap().parse::<i32>().unwrap();
+        let videoinfo = VideoInfo::VideoInfo::find_videoinfo_for_formatcode(&videoInfos, itag);
+        println!("itag {}--> type {:?}",itag,videoinfo.adaptive_type);
+        match videoinfo.adaptive_type {
+            VideoInfo::AdaptiveType::Audio =>
+                accum.push(&hashmap_parsed_url.clone()),
+            _  => ()
+
+        }
+        accum
+    });
 
     println!("{}",streams_vec.len());
     println!("{:?}", streams_vec[0]);
