@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bcc8607f-2d0d-4109-ae36-a9d4d3607ce8" name="Default" comment="">
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/VideoInfo.rs" afterPath="$PROJECT_DIR$/src/video_info.rs" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main.rs" afterPath="$PROJECT_DIR$/src/main.rs" />
     </list>
@@ -17,24 +18,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="main.rs" pinned="false" current-in-tab="true">
+      <file leaf-file-name="main.rs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main.rs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="693">
-              <caret line="78" column="20" lean-forward="false" selection-start-line="78" selection-start-column="20" selection-end-line="78" selection-end-column="20" />
+            <state relative-caret-position="2457">
+              <caret line="117" column="10" lean-forward="true" selection-start-line="117" selection-start-column="8" selection-end-line="117" selection-end-column="12" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="VideoInfo.rs" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/VideoInfo.rs">
+      <file leaf-file-name="video_info.rs" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/video_info.rs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="674">
-              <caret line="120" column="5" lean-forward="true" selection-start-line="120" selection-start-column="5" selection-end-line="120" selection-end-column="5" />
+            <state relative-caret-position="527">
+              <caret line="117" column="0" lean-forward="false" selection-start-line="117" selection-start-column="0" selection-end-line="117" selection-end-column="0" />
               <folding>
-                <element signature="e#6227#6228#0" expanded="true" />
-                <element signature="e#6315#6316#0" expanded="true" />
+                <element signature="e#6082#6083#0" expanded="true" />
+                <element signature="e#6170#6171#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -91,6 +92,8 @@
       <find>extrac</find>
       <find>int32</find>
       <find>println</find>
+      <find>videoInfos</find>
+      <find>parsed_url</find>
     </findStrings>
     <replaceStrings>
       <replace>i32</replace>
@@ -151,6 +154,11 @@
               <item name="youtube-rust" type="b2602c69:ProjectViewProjectNode" />
               <item name="youtube-rust" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="youtube-rust" type="b2602c69:ProjectViewProjectNode" />
+              <item name="youtube-rust" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -200,7 +208,7 @@
       <workItem from="1515770937914" duration="714000" />
       <workItem from="1515797456203" duration="8406000" />
       <workItem from="1515954564243" duration="8383000" />
-      <workItem from="1516022105058" duration="9030000" />
+      <workItem from="1516022105058" duration="15499000" />
     </task>
     <task id="LOCAL-00001" summary="Hyper, tokio, https">
       <created>1515532123523</created>
@@ -237,11 +245,18 @@
       <option name="project" value="LOCAL" />
       <updated>1516036551821</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Reads/Writes">
+      <created>1516038677665</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1516038677665</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="69374000" />
+    <option name="totallyTimeSpent" value="75843000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1170" extended-state="6" />
@@ -313,13 +328,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/VideoInfo.rs">
+    <entry file="file://$PROJECT_DIR$/src/video_info.rs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2415">
           <caret line="115" column="0" lean-forward="false" selection-start-line="115" selection-start-column="0" selection-end-line="115" selection-end-column="0" />
           <folding>
-            <element signature="e#6227#6228#0" expanded="true" />
-            <element signature="e#6315#6316#0" expanded="true" />
+            <element signature="e#6082#6083#0" expanded="true" />
+            <element signature="e#6170#6171#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -356,13 +371,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/VideoInfo.rs">
+    <entry file="file://$PROJECT_DIR$/src/video_info.rs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="945">
           <caret line="45" column="9" lean-forward="false" selection-start-line="45" selection-start-column="9" selection-end-line="45" selection-end-column="9" />
           <folding>
-            <element signature="e#6227#6228#0" expanded="true" />
-            <element signature="e#6315#6316#0" expanded="true" />
+            <element signature="e#6082#6083#0" expanded="true" />
+            <element signature="e#6170#6171#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -652,17 +667,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/VideoInfo.rs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="674">
-          <caret line="120" column="5" lean-forward="true" selection-start-line="120" selection-start-column="5" selection-end-line="120" selection-end-column="5" />
-          <folding>
-            <element signature="e#6227#6228#0" expanded="true" />
-            <element signature="e#6315#6316#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/run.out">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
@@ -673,9 +677,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main.rs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="693">
-          <caret line="78" column="20" lean-forward="false" selection-start-line="78" selection-start-column="20" selection-end-line="78" selection-end-column="20" />
+        <state relative-caret-position="2457">
+          <caret line="117" column="10" lean-forward="true" selection-start-line="117" selection-start-column="8" selection-end-line="117" selection-end-column="12" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/video_info.rs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="117" column="0" lean-forward="false" selection-start-line="117" selection-start-column="0" selection-end-line="117" selection-end-column="0" />
+          <folding>
+            <element signature="e#6082#6083#0" expanded="true" />
+            <element signature="e#6170#6171#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

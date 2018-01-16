@@ -116,10 +116,6 @@ impl VideoInfo {
         ]
     }
 
-    pub fn default() -> VideoInfo {
-        VideoInfo::new(0, VideoType::Unknown, 0, false, AudioType::Unknown, 0, AdaptiveType::Unknown)
-    }
-
     pub fn find_videoinfo_for_formatcode<'a>(infos: &'a Vec<VideoInfo>, format_code: i32) -> &'a VideoInfo
     {
         infos.iter().find(|&x| x.format_code == format_code).unwrap_or(&infos[0])
